@@ -24,8 +24,9 @@ public class HomePage {
 	private By service = By.name("service");
 	private By submit = By.xpath("(//button[text()='SUBMIT'])[1]");
 	private By successMessg = By.xpath("//div[@class='thank_content msg']/p");
-	private By servicesrLink = By.xpath("//li[@class='web-display ']/a");
-	private By automationService = By.linkText("Test Automation");
+	private By servicesLink = By.xpath("//nav[@id='navbar']//a");
+
+	private By breadCrumb = By.xpath("//li[@class='breadcrumb-item active']");
 
 	// 3. public page actions/methods:
 	public String callbackRequest(String name, String phone, String service) {
@@ -51,23 +52,43 @@ public class HomePage {
 		return email;
 	}
 
-	Object page;
+	String value;
 
-	public Object automationServices(String service) {
+	public String getServiceInfo(String service) {
 		navigateToServicesMenu();
-		String serviceExp = service.toLowerCase();
-
-		if (service.equalsIgnoreCase("Test Automation")) {
-			eleUtil.doClick(automationService);
-			page = new AutomationPage(driver);
+		System.out.println("service in page class:" + service);
+		By serviceLocator = By.linkText(service);
+		eleUtil.doClick(serviceLocator);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return page;
-
+		value = getBreadCrumbValue();
+//		switch (service) {
+//		case "Test Automation":
+//			eleUtil.doClick(serviceLocator);
+//			value = getBreadCrumbValue();
+//
+//		case "Manual Testing":
+//			eleUtil.doClick(serviceLocator);
+//			value = getBreadCrumbValue();
+//		default:
+//			break;
+//		}
+		return value;
 	}
 
 	private void navigateToServicesMenu() {
-		eleUtil.doClick(servicesrLink);
+		eleUtil.doClick(servicesLink);
 
+	}
+
+	public String getBreadCrumbValue() {
+		String text = eleUtil.doGetElementText(breadCrumb);
+		System.out.println("Bread crum value in page class" + text);
+		return text;
 	}
 
 //

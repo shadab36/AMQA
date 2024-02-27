@@ -24,7 +24,8 @@
 		</classes>
 	</test>
 
-	<!-- <test name="Register Page Test"> <parameter name="browser" value="chrome" 
+	<!-- <test name="Register Page Test"> <parameter name="browser"
+	value="chrome" 
 		/> <classes> <class name="com.qa.opencart.tests.RegisterPageTest" /> </classes> 
 		</test> 
 
