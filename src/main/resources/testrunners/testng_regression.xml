@@ -4,7 +4,6 @@
 <suite name="AMQA Regression Suite" verbose="4"
 	thread-count="4" parallel="tests">
 
-
 	<listeners>
 		<!-- <listener
 			class-name="com.qa.amaqa.listeners.ExtentReportListener" /> 

@@ -19,7 +19,10 @@ public class HomePageTest extends BaseTest {
 	@DataProvider
 	public Object[][] servicesTestData() {
 		return new Object[][] { { "Test Automation" }, { "Manual Testing" }, { "Performance Testing" },
-				{ "Security Testing" }, { "Usability Testing" }, { "Agile Testing" } };
+				{ "Security Testing" }, { "Usability Testing" }, { "Agile Testing" },
+				{ "Digital Testing (Web & Mobile)" }, { "Mobile Testing" }, { "API/Web Services Testing" },
+				{ "DW/Analytics Testing" }, { "Data Migration Testing" }, { "Test Data Management" },
+				{ "Cloud Testing" }, { "Accessibility Testing" } };
 	}
 
 	@Test(dataProvider = "servicesTestData")
