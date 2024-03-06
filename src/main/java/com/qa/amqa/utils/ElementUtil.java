@@ -56,7 +56,7 @@ public class ElementUtil {
 
 	public WebElement getElement(By locator, int timeOut) {
 		WebElement element = waitForElementVisible(locator, timeOut);
-		if(Boolean.parseBoolean(DriverFactory.highlightElement)) {
+		if (Boolean.parseBoolean(DriverFactory.highlightElement)) {
 			jsUtil.flash(element);
 		}
 		return element;
@@ -71,8 +71,8 @@ public class ElementUtil {
 			System.out.println("Element is not found using this locator..." + locator);
 			element = waitForElementVisible(locator, DEFAULT_TIME_OUT);
 		}
-		
-		if(Boolean.parseBoolean(DriverFactory.highlightElement)) {
+
+		if (Boolean.parseBoolean(DriverFactory.highlightElement)) {
 			jsUtil.flash(element);
 		}
 		return element;
@@ -318,18 +318,15 @@ public class ElementUtil {
 
 	// ***********************Wait Utils***********************//
 
-	
 	public Alert waitForAlertJsPopUpWithFluentWait(int timeOut, int pollingTime) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoAlertPresentException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoAlertPresentException.class).pollingEvery(Duration.ofSeconds(pollingTime))
 				.withMessage("------time out is done...Alert is not found.....");
-		
+
 		return wait.until(ExpectedConditions.alertIsPresent());
 
 	}
-	
+
 	public Alert waitForAlertJsPopUp(int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.alertIsPresent());
@@ -350,59 +347,51 @@ public class ElementUtil {
 	public void EnterAlertValue(int timeOut, String value) {
 		waitForAlertJsPopUp(timeOut).sendKeys(value);
 	}
-	
-	
+
 	public String waitForTitleIsAndCapture(String titleFraction, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		if(wait.until(ExpectedConditions.titleContains(titleFraction))) {
+		if (wait.until(ExpectedConditions.titleContains(titleFraction))) {
 			String title = driver.getTitle();
 			return title;
-		}
-		else {
+		} else {
 			System.out.println("title is not present within the given timeout : " + timeOut);
 			return null;
 		}
 	}
-	
-	
+
 	public String waitForFullTitleAndCapture(String titleVal, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		if(wait.until(ExpectedConditions.titleIs(titleVal))) {
+		if (wait.until(ExpectedConditions.titleIs(titleVal))) {
 			String title = driver.getTitle();
 			return title;
-		}
-		else {
+		} else {
 			System.out.println("title is not present within the given timeout : " + timeOut);
 			return null;
 		}
 	}
-	
-	
+
 	public String waitForURLContainsAndCapture(String urlFraction, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		if(wait.until(ExpectedConditions.urlContains(urlFraction))) {
+		if (wait.until(ExpectedConditions.urlContains(urlFraction))) {
 			String url = driver.getCurrentUrl();
 			return url;
-		}
-		else {
+		} else {
 			System.out.println("url is not present within the given timeout : " + timeOut);
 			return null;
 		}
 	}
-	
+
 	public String waitForURLAndCapture(String urlValue, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		if(wait.until(ExpectedConditions.urlToBe(urlValue))) {
+		if (wait.until(ExpectedConditions.urlToBe(urlValue))) {
 			String url = driver.getCurrentUrl();
 			return url;
-		}
-		else {
+		} else {
 			System.out.println("url is not present within the given timeout : " + timeOut);
 			return null;
 		}
 	}
-	
-	
+
 	public boolean waitForTotalWindows(int totalWindowsToBe, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		return wait.until(ExpectedConditions.numberOfWindowsToBe(totalWindowsToBe));
@@ -433,7 +422,7 @@ public class ElementUtil {
 	public WebElement waitForElementVisible(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-		if(Boolean.parseBoolean(DriverFactory.highlightElement)) {
+		if (Boolean.parseBoolean(DriverFactory.highlightElement)) {
 			jsUtil.flash(element);
 		}
 		return element;
@@ -444,6 +433,7 @@ public class ElementUtil {
 	 * match the locator are visible. Visibility means that the elements are not
 	 * only displayed but also have a height and width that is greater than 0.
 	 * default timeout = 500 ms
+	 * 
 	 * @param locator
 	 * @param timeOut
 	 * @return
@@ -452,9 +442,8 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
-	
-	
-	//default timeout = intervalTime
+
+	// default timeout = intervalTime
 	public List<WebElement> waitForElementsVisible(By locator, int timeOut, int intervalTime) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(intervalTime));
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
@@ -496,20 +485,15 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-	
-	
-	//frames with wait:
-	
+
+	// frames with wait:
 	public void waitForFrameAndSwitchToItWithFluentWait(int timeOut, int pollingTime, String idOrName) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoSuchFrameException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
-				.withMessage("------time out is done...frame is not found.....");		
-		 wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(idOrName));
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoSuchFrameException.class).pollingEvery(Duration.ofSeconds(pollingTime))
+				.withMessage("------time out is done...frame is not found.....");
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(idOrName));
 	}
-	
-	
+
 	public void waitForFrameAndSwitchToItByIDOrName(int timeOut, String idOrName) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(idOrName));
@@ -529,36 +513,23 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameLocator));
 	}
-	
-	
 
 	public WebElement waitForElementVisibleWithFluentWait(By locator, int timeOut, int pollingTime) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class)
-				.ignoring(ElementNotInteractableException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
+				.ignoring(ElementNotInteractableException.class).pollingEvery(Duration.ofSeconds(pollingTime))
 				.withMessage("------time out is done...element is not found.....");
-		
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-
 	}
-	
+
 	public WebElement waitForElementPresenceWithFluentWait(By locator, int timeOut, int pollingTime) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class)
-				.ignoring(ElementNotInteractableException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
+				.ignoring(ElementNotInteractableException.class).pollingEvery(Duration.ofSeconds(pollingTime))
 				.withMessage("------time out is done...element is not found.....");
-		
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-
 	}
-	
-	
+
 	public WebElement retryingElement(By locator, int timeOut) {// 20
 
 		WebElement element = null;
@@ -587,7 +558,7 @@ public class ElementUtil {
 		return element;
 
 	}
-	
+
 	public WebElement retryingElement(By locator, int timeOut, int pollingTime) {// 20
 
 		WebElement element = null;
@@ -608,24 +579,21 @@ public class ElementUtil {
 			}
 			attempts++;
 		}
-
 		if (element == null) {
 			System.out.println(
 					"element is not found...tried for " + timeOut + " secs " + " with the interval of 500 millisecons");
 		}
 		return element;
-
 	}
 
 	public Boolean isPageLoaded() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		String flag = wait.until(ExpectedConditions.jsReturnsValue("return document.readyState == \'complete\'"))
-				.toString(); //"true"
-		return Boolean.parseBoolean(flag);//true
+				.toString(); // "true"
+		return Boolean.parseBoolean(flag);// true
 	}
 
 	public void waitForPageLoad(int timeOut) {
-
 		long endTime = System.currentTimeMillis() + timeOut;
 		while (System.currentTimeMillis() < endTime) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -638,8 +606,17 @@ public class ElementUtil {
 			}
 		}
 	}
-	
-	
-	
-	
+
+	/**
+	 * generate random email
+	 * 
+	 * @return
+	 */
+	public String getEmail() {
+		// String email "testautomation" + UUID.randomUUID() + "@gmail.com";
+		String email = "test" + System.currentTimeMillis() + "@gmail.com";
+		System.out.println("Email:" + email);
+		return email;
+	}
+
 }
