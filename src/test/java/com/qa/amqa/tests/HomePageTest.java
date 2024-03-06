@@ -5,7 +5,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.amqa.base.BaseTest;
-import com.qa.amqa.pages.AutomationPage;
 import com.qa.amqa.utils.AppConstants;
 
 public class HomePageTest extends BaseTest {
