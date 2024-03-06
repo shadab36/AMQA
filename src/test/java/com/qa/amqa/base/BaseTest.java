@@ -9,14 +9,18 @@ import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import com.qa.amqa.factory.DriverFactory;
+import com.qa.amqa.pages.AboutUsPage;
 import com.qa.amqa.pages.AutomationPage;
 import com.qa.amqa.pages.HomePage;
+import com.qa.amqa.pages.VirtualTeamPage;
 
 public class BaseTest {
 
 	WebDriver driver;
 	protected HomePage homePage;
 	protected AutomationPage automationPage;
+	protected VirtualTeamPage virtualTeamPage;
+	protected AboutUsPage aboutUsPage;
 
 	protected DriverFactory df;
 	protected Properties prop;

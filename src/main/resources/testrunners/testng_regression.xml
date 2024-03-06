@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="AMQA Regression Suite" verbose="4"
-	thread-count="4" parallel="tests">
+	thread-count="2" parallel="tests">
 
 	<listeners>
 		<!-- <listener
@@ -13,8 +13,15 @@
 			class-name="com.qa.amaqa.listeners.AnnotationTransformer" /> -->
 	</listeners>
 
+<test name="About Us Page Test">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0" />
 
-	<test name="Home Page Test">
+		<classes>
+			<class name="com.qa.amqa.tests.AboutUsPageTest" />
+		</classes>
+	</test>
+	<!--<test name="Home Page Test">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="113.0" />
 
@@ -23,38 +30,14 @@
 		</classes>
 	</test>
 
-	<!-- <test name="Register Page Test"> <parameter name="browser"
-	value="chrome" 
-		/> <classes> <class name="com.qa.opencart.tests.RegisterPageTest" /> </classes> 
-		</test> 
-
-	<test name="Accounts Page Test">
-		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="90.0" />
+	<test name="Virtual Team Page Test">
+		<parameter name="browser" value="edge" />
+		<parameter name="browserversion" value="113.0" />
 
 		<classes>
-			<class name="com.qa.opencart.tests.AccountsPageTest" />
+			<class name="com.qa.amqa.tests.VirtualTeamPageTest" />
 		</classes>
 	</test>
-
-	<test name="Search Test">
-		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="79.0" />
-
-		<classes>
-			<class name="com.qa.opencart.tests.SearchTest" />
-		</classes>
-	</test>
-
-
-	 <test name="Product Info Test">
-		<parameter name="browser" value="firefox" />
-		<parameter name="browserversion" value="83.0" />
-
-		<classes>
-			<class name="com.qa.opencart.tests.ProductPageInfoTest" />
-		</classes>
-	</test> -->
-
+-->
 
 </suite>
