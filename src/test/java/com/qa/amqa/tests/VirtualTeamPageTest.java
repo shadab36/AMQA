@@ -26,6 +26,7 @@ public class VirtualTeamPageTest extends BaseTest {
 
 	@Test
 	public void virtualTeamPageUrlTest() {
-		System.out.println(virtualTeamPage.getPageUrl());
+		String url = virtualTeamPage.getPageUrl();
+		Assert.assertTrue(url.contains("virtual-team"));
 	}
 }

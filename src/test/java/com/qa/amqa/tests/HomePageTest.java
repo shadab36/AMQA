@@ -35,5 +35,4 @@ public class HomePageTest extends BaseTest {
 		String actSucsMsg = homePage.callbackRequest("test", "9856321254", "Test Automation");
 		Assert.assertTrue(actSucsMsg.contains(AppConstants.SUCCESS_MESSG_FRACTION_VALUE));
 	}
-
 }

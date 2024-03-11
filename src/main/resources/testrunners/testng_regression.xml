@@ -2,42 +2,38 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="AMQA Regression Suite" verbose="4"
-	thread-count="2" parallel="tests">
-
+	thread-count="3" parallel="tests">
+	<!--
+///AM-QA-Experts/src/main/java/com/qa/amqa/listeners/ExtentReportListener.java
+-->
 	<listeners>
-		<!-- <listener
-			class-name="com.qa.amaqa.listeners.ExtentReportListener" /> 
 		<listener
-			class-name="com.qa.amaqa.listeners.TestAllureListener" />
+			class-name="com.qa.amqa.listeners.ExtentReportListener" />
 		<listener
-			class-name="com.qa.amaqa.listeners.AnnotationTransformer" /> -->
+			class-name="com.qa.amqa.listeners.TestAllureListener" />
+		<listener
+			class-name="com.qa.amqa.listeners.AnnotationTransformer" />
 	</listeners>
-
-<test name="About Us Page Test">
-		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="113.0" />
-
-		<classes>
-			<class name="com.qa.amqa.tests.AboutUsPageTest" />
-		</classes>
-	</test>
-	<!--<test name="Home Page Test">
-		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="113.0" />
-
-		<classes>
-			<class name="com.qa.amqa.tests.HomePageTest" />
-		</classes>
-	</test>
 
 	<test name="Virtual Team Page Test">
 		<parameter name="browser" value="edge" />
-		<parameter name="browserversion" value="113.0" />
-
 		<classes>
 			<class name="com.qa.amqa.tests.VirtualTeamPageTest" />
 		</classes>
 	</test>
--->
+
+	<test name="About Us Page Test">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.qa.amqa.tests.AboutUsPageTest" />
+		</classes>
+	</test>
+
+	<test name="Home Page Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.amqa.tests.HomePageTest" />
+		</classes>
+	</test>
 
 </suite>

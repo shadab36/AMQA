@@ -24,7 +24,9 @@ public class AboutUsPageTest extends BaseTest {
 
 	@Test
 	public void contactUsMsgTest() {
-		
+		String msg = aboutUsPage.sendMessage("test", "9856321254","I want to test your services.");
+		Assert.assertTrue(!msg.contains(AppConstants.SUCCESS_MESSG_FRACTION_VALUE));
+
 	}
 
 }
