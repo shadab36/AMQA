@@ -19,13 +19,12 @@ public class AboutUsPageTest extends BaseTest {
 	public String getRandomEmailID() {
 		return "testautomation" + System.currentTimeMillis() + "@gmail.com";
 		// return "testautomation" + UUID.randomUUID()+"@gmail.com";
-
 	}
 
 	@Test
 	public void contactUsMsgTest() {
-		String msg = aboutUsPage.sendMessage("test", "9856321254","I want to test your services.");
-		Assert.assertTrue(!msg.contains(AppConstants.SUCCESS_MESSG_FRACTION_VALUE));
+		String msg = aboutUsPage.sendMessage("test", "9856321254", "I want to test your services.");
+		Assert.assertTrue(msg.contains(AppConstants.SUCCESS_MESSG_FRACTION_VALUE));
 
 	}
 

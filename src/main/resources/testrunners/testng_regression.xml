@@ -3,9 +3,8 @@
 
 <suite name="AMQA Regression Suite" verbose="4"
 	thread-count="3" parallel="tests">
-	<!--
-///AM-QA-Experts/src/main/java/com/qa/amqa/listeners/ExtentReportListener.java
--->
+
+
 	<listeners>
 		<listener
 			class-name="com.qa.amqa.listeners.ExtentReportListener" />
@@ -14,11 +13,10 @@
 		<listener
 			class-name="com.qa.amqa.listeners.AnnotationTransformer" />
 	</listeners>
-
-	<test name="Virtual Team Page Test">
-		<parameter name="browser" value="edge" />
+	<test name="Home Page Test">
+		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.qa.amqa.tests.VirtualTeamPageTest" />
+			<class name="com.qa.amqa.tests.HomePageTest" />
 		</classes>
 	</test>
 
@@ -29,11 +27,14 @@
 		</classes>
 	</test>
 
-	<test name="Home Page Test">
-		<parameter name="browser" value="chrome" />
+	<test name="Virtual Team Page Test">
+		<parameter name="browser" value="edge" />
 		<classes>
-			<class name="com.qa.amqa.tests.HomePageTest" />
+			<class name="com.qa.amqa.tests.VirtualTeamPageTest" />
 		</classes>
 	</test>
+
+
+	<!---->
 
 </suite>
