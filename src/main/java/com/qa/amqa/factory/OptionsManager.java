@@ -15,7 +15,6 @@ public class OptionsManager {
 	private FirefoxOptions fo;
 	private EdgeOptions eo;
 
-	
 	public OptionsManager(Properties prop) {
 		this.prop = prop;
 	}
@@ -31,20 +30,17 @@ public class OptionsManager {
 		
 		if(Boolean.parseBoolean(prop.getProperty("remote"))){
 			co.setCapability("browserName", "chrome");
-			co.setBrowserVersion(prop.getProperty("browserversion"));
+		//	co.setBrowserVersion(prop.getProperty("browserversion"));
 			//co.setCapability("enableVNC", true);
 //			co.setCapability("se:timeZone", "US/Pacific");
 //			co.setCapability("se:screenResolution", "1920x1080");
 			
-			Map<String, Object> selenoidOptions = new HashMap<>();
-			selenoidOptions.put("screenResolution", "1280x1024x24");
-			selenoidOptions.put("enableVNC", true);
-			selenoidOptions.put("name", prop.getProperty("testname"));
-			co.setCapability("selenoid:options", selenoidOptions);
-		}
-		
-		
-		
+//			Map<String, Object> selenoidOptions = new HashMap<>();
+//			selenoidOptions.put("screenResolution", "1280x1024x24");
+//			selenoidOptions.put("enableVNC", true);
+//			selenoidOptions.put("name", prop.getProperty("testname"));
+//			co.setCapability("selenoid:options", selenoidOptions);
+	}
 		
 //		co.addArguments("--window-size=1920,1080");
 //		co.addArguments("--no-sandbox");
@@ -57,11 +53,8 @@ public class OptionsManager {
 //		co.addArguments("--log-level=3");
 //		co.addArguments("--output=/dev/null");
 		
-		
-		
 		return co;
 	}
-	
 	
 	public FirefoxOptions getFirefoxOptions() {
 		fo = new FirefoxOptions();
@@ -75,7 +68,7 @@ public class OptionsManager {
 		
 		if(Boolean.parseBoolean(prop.getProperty("remote"))){
 			fo.setCapability("browserName", "firefox");
-			fo.setBrowserVersion(prop.getProperty("browserversion"));
+			//fo.setBrowserVersion(prop.getProperty("browserversion"));
 			//fo.setCapability("enableVNC", true);
 		}
 		

@@ -1,12 +1,7 @@
 package com.qa.amqa.pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import com.qa.amqa.utils.AppConstants;
 import com.qa.amqa.utils.ElementUtil;
 
@@ -51,7 +46,6 @@ public class VirtualTeamPage {
 	}
 
 	private void enterDuration(String value) {
-
 		if (doNumberFormatCheck(value)) {
 			eleUtil.doSendKeys(duration, value);
 		} else {

@@ -18,34 +18,28 @@ public class AboutUsPage {
 	}
 
 	// 2. private By locators:
+	private By contactUsBtn = By.xpath("//a[text()='contact us']");
 	private By fullName = By.name("fullname");
 	private By emailId = By.name("email");
 	private By phoneNumber = By.name("number");
-	private By message = By.name("service");
-	private By submit = By.xpath("(//button[text()='SUBMIT'])[1]");
+	private By message = By.name("message");
+	private By submit = By.id("contactSubmit");
 	private By successMessg = By.xpath("//div[@class='thank_content msg']/p");
 
 	// 3. public page actions/methods:
-	public void sendMessage(String name, String phone, String service) {
-//		eleUtil.waitForElementVisible(fullName, AppConstants.MEDIUM_DEFAULT_WAIT);
-//		eleUtil.doSendKeys(fullName, name);
-//		eleUtil.doSendKeys(emailId, eleUtil.getEmail());
-//		eleUtil.doSendKeys(phoneNumber, phone);
-//		selectService(service);
-//		eleUtil.doClick(submit);
-//		return getSuccessMsg();
+	public String sendMessage(String name, String phone, String msg) {
+		eleUtil.doClick(contactUsBtn);
+		eleUtil.doSendKeys(fullName, name);
+		eleUtil.doSendKeys(emailId, eleUtil.getEmail());
+		eleUtil.doSendKeys(phoneNumber, phone);
+		eleUtil.doSendKeys(message, msg);
+		eleUtil.doClick(submit);
+		return getSuccessMsg();
 	}
-
-
-
-
-
 	
-
-	
-
-	
-
-	
-
+	private String getSuccessMsg() {
+		String successMsg = eleUtil.doGetElementText(successMessg);
+		System.out.println("success message:" + successMsg);
+		return successMsg;
+	}
 }
